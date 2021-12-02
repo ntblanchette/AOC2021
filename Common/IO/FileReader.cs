@@ -6,5 +6,13 @@
         {
             return File.ReadAllText(fileName);
         }
+
+        public List<string> GetFileContentAsList(string fileName)
+        {
+            var content = GetFileContent(fileName);
+
+            var contentSplitter = new ContentSplitter();
+            return contentSplitter.SplitIntoStrings(content);
+        }
     }
 }

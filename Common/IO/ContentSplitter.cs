@@ -1,11 +1,11 @@
 ﻿namespace Common.IO
 {
-    public class ContentSplitter
+    internal class ContentSplitter
     {
-        public List<int> SplitIntoInt(string content)
+        public List<string> SplitIntoStrings(string content)
         {
             var allStrings = content.Split("\n", StringSplitOptions.RemoveEmptyEntries);
-            return allStrings.Select(x => Convert.ToInt32(x)).ToList();
+            return allStrings.ToList();
         }
     }
 }
