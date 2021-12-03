@@ -4,14 +4,14 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Day3.Tests
+namespace Day4.Tests
 {
-    public class Day3CalculatorTests
+    public class Day4CalculatorTests
     {
-        private Day3Calculator calculator;
+        private Day4Calculator calculator;
         private ContentSplitter contentSplitter;
-        private LineContentDay3Mapper mapper;
-        private ContentBreaker<LineContentDay3> contentBreaker;
+        private LineContentDay4Mapper mapper;
+        private ContentBreaker<LineContentDay4> contentBreaker;
 
         [SetUp]
         public void Setup()
@@ -29,7 +29,7 @@ namespace Day3.Tests
 
             var result = calculator.Calculate1(listOfInputs);
 
-            Assert.AreEqual(198, result);
+            Assert.AreEqual(4512, result);
         }
 
         [Test]
@@ -39,10 +39,10 @@ namespace Day3.Tests
 
             var result = calculator.Calculate2(listOfInputs);
 
-            Assert.AreEqual(230, result);
+            Assert.AreEqual(1924, result);
         }
 
-        private List<LineContentDay3> GetInput(string fileName)
+        private List<LineContentDay4> GetInput(string fileName)
         {
             var inputText = File.ReadAllText(fileName);
             var lines = contentSplitter.SplitIntoStrings(inputText);
