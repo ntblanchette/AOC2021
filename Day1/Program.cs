@@ -7,7 +7,7 @@ var lineContentDay1Mapper = new LineContentDay1Mapper();
 var contentBreaker = new ContentBreaker<LineContentDay1>(lineContentDay1Mapper);
 var calculator = new Day1Calculator();
 
-var content = fileReader.GetFileContentAsList("input");
+var content = fileReader.GetFileContentAsList("Day1.txt");
 var listOfContent = contentBreaker.BreakIntoObject(content);
 
 var numberOfIncreases = calculator.GetIncreases(listOfContent);
