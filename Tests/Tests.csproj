@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Day5\Demo.txt" />
+    <None Remove="Day6\DemoDay6.txt" />
+    <None Remove="Day7\DemoDay7.txt" />
+    <None Remove="Inputs\DemoDay2.txt" />
+    <None Remove="Inputs\DemoDay3.txt" />
+    <None Remove="Inputs\DemoDay4.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Inputs\DemoDay2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay7.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Day2\Day2.csproj" />
+    <ProjectReference Include="..\Day3\Day3.csproj" />
+    <ProjectReference Include="..\Day4\Day4.csproj" />
+    <ProjectReference Include="..\Day5\Day5.csproj" />
+    <ProjectReference Include="..\Day6\Day6.csproj" />
+    <ProjectReference Include="..\Day7\Day7.csproj" />
+  </ItemGroup>
+
+</Project>
