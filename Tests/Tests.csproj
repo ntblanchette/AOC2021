@@ -8,12 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Day5\Demo.txt" />
-    <None Remove="Day6\DemoDay6.txt" />
-    <None Remove="Day7\DemoDay7.txt" />
+    <None Remove="Inputs\DemoDay10.txt" />
+    <None Remove="Inputs\DemoDay11.txt" />
+    <None Remove="Inputs\DemoDay12.txt" />
+    <None Remove="Inputs\DemoDay13.txt" />
     <None Remove="Inputs\DemoDay2.txt" />
     <None Remove="Inputs\DemoDay3.txt" />
     <None Remove="Inputs\DemoDay4.txt" />
+	<None Remove="Inputs\DemoDay5.txt" />
+	<None Remove="Inputs\DemoDay6.txt" />
+	<None Remove="Inputs\DemoDay7.txt" />
+    <None Remove="Inputs\DemoDay8.txt" />
+    <None Remove="Inputs\DemoDay9.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +36,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Inputs\DemoDay6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay11.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay12.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay13.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay9.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\DemoDay8.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Inputs\DemoDay7.txt">
@@ -51,6 +75,7 @@
     <ProjectReference Include="..\Day5\Day5.csproj" />
     <ProjectReference Include="..\Day6\Day6.csproj" />
     <ProjectReference Include="..\Day7\Day7.csproj" />
+    <ProjectReference Include="..\Day8\Day8.csproj" />
   </ItemGroup>
 
 </Project>
