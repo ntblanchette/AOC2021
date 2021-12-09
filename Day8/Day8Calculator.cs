@@ -20,43 +20,119 @@
             var count = 0;
             foreach (var line in content)
             {
-                count += CalculateLineValue(line);
+                var segmentStrings = DetermineSegementStrings(line);
+                for (int i = 0; i < segmentStrings.Length; i++)
+                {
+                    segmentStrings[i] = Sorted(segmentStrings[i]);
+                }
+
+                for (int i = 0; i < line.Digits.Count; i++)
+                {
+                    line.Digits[i] = Sorted(line.Digits[i]);
+                }
+                string fourDigitString = "";
+                foreach (var segment in line.Digits)
+                {
+                    for (int i = 0; i < segmentStrings.Length; i++)
+                    {
+                        if (segmentStrings[i] == segment) fourDigitString += i;
+                    }
+                }
+                count += int.Parse(fourDigitString);
             }
 
             return count;
         }
 
-        private int CalculateLineValue(LineContentDay8 line)
+        public string Sorted(string s)
         {
-            var strDigit = "";
-            foreach(var t in line.Digits)
+            char[] arr = s.ToCharArray();
+            Array.Sort(arr);
+            return new string(arr);
+        }
+
+        private string[] DetermineSegementStrings(LineContentDay8 line)
+        {
+            string[] segmentStrings = new string[10];
+            Extract1478(line, segmentStrings);
+            var fourMinusOne = FourMinusOne(segmentStrings);
+            Extract960(line, segmentStrings, fourMinusOne);
+            Extract253(line, segmentStrings, fourMinusOne);
+
+            return segmentStrings;
+        }
+
+        private string FourMinusOne(string[] segments)
+        {
+            string fourMinusOne = ""; //4-1 vals
+            IEnumerable<char> chars = segments[4].Except(segments[1]);
+            foreach (var c in chars)
             {
-                strDigit += CalcPatern(t);
-
+                fourMinusOne += c.ToString();
             }
-
-            return Convert.ToInt32(strDigit);
+            return fourMinusOne;
         }
 
-        private int CalcPatern(List<char> charList)
+        private void Extract1478(LineContentDay8 line, string[] segments)
         {
-            var t = GetNumberPossibilities(charList);
-            if (t.Count == 1)
+            foreach (var segment in line.SignalPaterns)
             {
-                return t[0];
+                switch (segment.Length)
+                {
+                    case 2:
+                        segments[1] = segment;
+                        break;
+                    case 3:
+                        segments[7] = segment;
+                        break;
+                    case 4:
+                        segments[4] = segment;
+                        break;
+                    case 7:
+                        segments[8] = segment;
+                        break;
+                }
             }
-
-            return 0;
         }
 
-        private bool UniqueNumberOfSegments(List<char> charList)
+        private void Extract253(LineContentDay8 line, string[] segments, string fourMinusOne)
         {
-            return GetNumberPossibilities(charList).Count == 1;
+            for (int i = 0; i < line.SignalPaterns.Count; i++) //determine 253
+            {
+                if (line.SignalPaterns[i].Length != 5)
+                    continue;
+
+                if (line.SignalPaterns[i].Except(segments[1]).Count() == 3) //det 3
+                    segments[3] = line.SignalPaterns[i];
+                else if (line.SignalPaterns[i].Except(fourMinusOne).Count() == 3) //det 5
+                    segments[5] = line.SignalPaterns[i];
+                else segments[2] = line.SignalPaterns[i]; //determine 2
+            }
         }
 
-        private List<int> GetNumberPossibilities(List<char> charList)
+        private void Extract960(LineContentDay8 line, string[] segments, string fourMinusOne)
         {
-            var charCount = charList.Count;
+            for (int i = 0; i < line.SignalPaterns.Count; i++) //determine 960
+            {
+                if (line.SignalPaterns[i].Length != 6)
+                    continue;
+
+                if (line.SignalPaterns[i].Except(segments[4]).Count() == 2) //determine 9
+                    segments[9] = line.SignalPaterns[i];
+                else if (line.SignalPaterns[i].Except(fourMinusOne).Count() == 4) //determine 6
+                    segments[6] = line.SignalPaterns[i];
+                else segments[0] = line.SignalPaterns[i]; //determine 0
+            }
+        }
+
+        private bool UniqueNumberOfSegments(string segment)
+        {
+            return GetNumberPossibilities(segment).Count == 1;
+        }
+
+        private List<int> GetNumberPossibilities(string segment)
+        {
+            var charCount = segment.Length;
             var indexes = new List<int>();
 
             for (int i = 0; i < Paterns.Count; i++)

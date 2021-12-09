@@ -3,16 +3,16 @@ using Common.Services;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
-using Day8;
+using Day9;
 
-namespace Tests.Day8
+namespace Tests.Day9
 {
-    public class Day8CalculatorTests
+    public class Day9CalculatorTests
     {
-        private Day8Calculator calculator;
+        private Day9Calculator calculator;
         private ContentSplitter contentSplitter;
-        private LineContentDay8Mapper mapper;
-        private ContentBreaker<LineContentDay8> contentBreaker;
+        private LineContentDay9Mapper mapper;
+        private ContentBreaker<LineContentDay9> contentBreaker;
 
         [SetUp]
         public void Setup()
@@ -26,24 +26,24 @@ namespace Tests.Day8
         [Test]
         public void Calculate1_IsValid()
         {
-            var listOfInputs = GetInput("Inputs/DemoDay8.txt");
+            var listOfInputs = GetInput("Inputs/DemoDay9.txt");
 
             var result = calculator.Calculate1(listOfInputs);
 
-            Assert.AreEqual(26, result);
+            Assert.AreEqual(15, result);
         }
 
         [Test]
         public void Calculate2_IsValid()
         {
-            var listOfInputs = GetInput("Inputs/DemoDay8.txt");
+            var listOfInputs = GetInput("Inputs/DemoDay9.txt");
 
             var result = calculator.Calculate2(listOfInputs);
 
-            Assert.AreEqual(61229, result);
+            Assert.AreEqual(1134, result);
         }
 
-        private List<LineContentDay8> GetInput(string fileName)
+        private List<LineContentDay9> GetInput(string fileName)
         {
             var inputText = File.ReadAllText(fileName);
             var lines = contentSplitter.SplitIntoStrings(inputText);

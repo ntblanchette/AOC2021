@@ -10,8 +10,8 @@ namespace Day8
             var secondPart = array.SkipWhile(x => x != "|").Skip(1);
             var obj = new LineContentDay8
             {
-                SignalPaterns = firstPart.Select(x => x.Select(y => y).OrderBy(y => y).ToList()).ToList(),
-                Digits = secondPart.Select(x => x.Select(y => y).OrderBy(y => y).ToList()).ToList(),
+                SignalPaterns = firstPart.Select(x => x).ToList(),
+                Digits = secondPart.Select(x => x).ToList(),
             };
 
             return obj;
